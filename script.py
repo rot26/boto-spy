@@ -4,19 +4,26 @@ import placebo
 session = boto3.Session(region_name='us-east-1')
 print(session)
 
-pill = placebo.attach(session, data_path='./.placebo')
+pill = placebo.attach(session, data_path='./.placebo', debug=True)
 print(pill)
 
-# pill.record() # have to run this at least once first.
-pill.playback()
+pill.record() # have to run this at least once first.
+# pill.playback()
 
-print(pill)
+print("recording")
 
 aws_lambda = session.client('lambda')
 functions = aws_lambda.list_functions()
+print("recorded")
 print(functions)
 
-# pill.playback()
+pill.playback()
+
+print("playback")
+
+functions = aws_lambda.list_functions()
+print(functions)
+print("done")
 
 # Now make Boto3 calls using the default session.
 # client = session.client('ec2')

@@ -1,0 +1,7 @@
+# ignore everything in this directory
+*
+# except this file
+!.gitignore
+
+# users must `git add --force` to add files in this directory
+
